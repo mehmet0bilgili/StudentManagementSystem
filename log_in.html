@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login Page</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+    }
+
+    .login-container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 300px;
+    }
+
+    .login-container h2 {
+      text-align: center;
+      color: #333;
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 8px;
+      color: #666;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+    }
+
+    .remember-forgot {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+    }
+
+    .remember-me input {
+      margin-right: 8px;
+    }
+
+    .login-btn {
+      background-color: #4caf50;
+      color: #fff;
+      padding: 10px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .login-btn:hover {
+      background-color: #45a049;
+    }
+
+    .forgot-password {
+      text-align: right;
+      color: #666;
+      text-decoration: none;
+      font-size: 14px;
+    }
+
+    .forgot-password:hover {
+      color: #333;
+    }
+
+    #timer {
+      font-size: 14px;
+      color: #666;
+      text-align: center;
+    }
+
+    .form-group.captcha {
+      margin-bottom: 20px;
+    }
+
+    .captcha-img {
+      display: block;
+      margin-bottom: 10px;
+    }
+
+  </style>
+</head>
+<body>
+
+  <div class="login-container">
+    <h2>Login</h2>
+    <form>
+      <div class="form-group">
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+      </div>
+
+      <div class="form-group captcha">
+        <label for="captcha">CAPTCHA:</label>
+        <img class="captcha-img" src="captcha_image.jpg" alt="CAPTCHA Image">
+        <input type="text" id="captcha" name="captcha" required>
+      </div>
+
+      <div class="remember-forgot">
+        <div class="remember-me">
+          <input type="checkbox" id="remember" name="remember">
+          <label for="remember">Remember me</label>
+        </div>
+        <a href="#" class="forgot-password">Forgot Password?</a>
+      </div>
+
+      <div id="timer">Time remaining: <span id="countdown">60</span> seconds</div>
+
+      <button type="submit" class="login-btn">Log In</button>
+    </form>
+  </div>
+
+  <script>
+    // Set the timer duration in seconds
+    var timerDuration = 60;
+
+    // Function to update the timer
+    function updateTimer() {
+      document.getElementById('countdown').textContent = timerDuration;
+      if (timerDuration === 0) {
+        // Close the tab if the timer reaches 0
+        window.close();
+      } else {
+        timerDuration--;
+        setTimeout(updateTimer, 1000); // Update every 1 second
+      }
+    }
+
+    // Start the timer when the page loads
+    document.addEventListener('DOMContentLoaded', function () {
+      setTimeout(updateTimer, 1000); // Initial call to start the timer
+    });
+
+    // Stop the timer if the user clicks the login button
+    document.getElementById('loginForm').addEventListener('submit', function () {
+      clearTimeout(updateTimer);
+    });
+  </script>
+
+</body>
+</html>
