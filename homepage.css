@@ -1,0 +1,54 @@
+body{
+    margin:0;
+}
+header{
+    display: flex;
+    height: 10vh;
+    background-color:aquamarine;
+    align-items: center;
+}
+.headerLeftPart{
+    flex:1;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+}
+.headerRightPart{
+    flex:1;
+    display:flex;
+    justify-content: flex-end;
+    margin-right:1%;
+}
+header img{
+    margin: 1%;
+    max-width: 10%;
+    max-height: auto;
+}
+.profileInformations{
+    flex-direction: row;
+    display: flex;
+
+}
+section{
+    height: 70vh;
+    background-color: antiquewhite;
+    display: flex;
+}
+
+.leftSectionPart{
+    flex:1;
+    border:2px solid grey;
+    display: flex;
+    flex-direction: column;
+}
+
+.midSectionPart{
+    flex:15;
+    border-right:2px solid grey;
+    border-bottom:2px solid grey;
+    border-top:2px solid grey;
+    display: flex;
+    flex-direction: column;
+}
+
